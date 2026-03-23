@@ -7,23 +7,6 @@ export const NAV_LINKS = [
 
 export const PRODUCTS = [
   {
-    id: "ishifaa",
-    name: { en: "iShifaa", ar: "آي شفاء" },
-    tagline: { en: "Your Health, In Your Hands", ar: "صحتك بين يديك" },
-    description: {
-      en: "A seamless mobile experience for patients to manage their healthcare journey — from booking appointments to accessing medical records.",
-      ar: "تجربة متنقلة سلسة للمرضى لإدارة رحلتهم الصحية — من حجز المواعيد إلى الوصول للسجلات الطبية.",
-    },
-    features: [
-      { en: "Online appointment booking", ar: "حجز المواعيد إلكترونياً" },
-      { en: "Digital health records access", ar: "الوصول للسجلات الصحية الرقمية" },
-      { en: "Prescription management", ar: "إدارة الوصفات الطبية" },
-      { en: "Real-time queue tracking", ar: "تتبع الدور في الوقت الفعلي" },
-    ],
-    accent: "sky" as const,
-    icon: "📱",
-  },
-  {
     id: "qms",
     name: { en: "Shifaa QMS", ar: "شفاء QMS" },
     tagline: { en: "Smart Queue, Zero Wait", ar: "طابور ذكي، بدون انتظار" },
@@ -56,6 +39,25 @@ export const PRODUCTS = [
     ],
     accent: "navy" as const,
     icon: "🏥",
+    contactToEnroll: true,
+  },
+  {
+    id: "ishifaa",
+    name: { en: "iShifaa", ar: "آي شفاء" },
+    tagline: { en: "Your Health, In Your Hands", ar: "صحتك بين يديك" },
+    description: {
+      en: "A seamless mobile experience for patients to manage their healthcare journey — from booking appointments to accessing medical records.",
+      ar: "تجربة متنقلة سلسة للمرضى لإدارة رحلتهم الصحية — من حجز المواعيد إلى الوصول للسجلات الطبية.",
+    },
+    features: [
+      { en: "Online appointment booking", ar: "حجز المواعيد إلكترونياً" },
+      { en: "Digital health records access", ar: "الوصول للسجلات الصحية الرقمية" },
+      { en: "Prescription management", ar: "إدارة الوصفات الطبية" },
+      { en: "Real-time queue tracking", ar: "تتبع الدور في الوقت الفعلي" },
+    ],
+    accent: "sky" as const,
+    icon: "📱",
+    comingSoon: true,
   },
 ];
 

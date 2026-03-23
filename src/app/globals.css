@@ -1,26 +1,160 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ══════════════════════════════════════════════
+   SHIFAA DESIGN SYSTEM — Tailwind v4 Theme
+   Stripe Light + Glassmorphism
+══════════════════════════════════════════════ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand Colors */
+  --color-sky: #0088CC;
+  --color-sky-hover: #0077B3;
+  --color-sky-active: #005F8F;
+  --color-sky-tint: rgba(0, 136, 204, 0.08);
+  --color-sky-ring: rgba(0, 136, 204, 0.20);
+
+  --color-navy: #003E78;
+  --color-navy-light: #1A5490;
+  --color-navy-dark: #002A52;
+  --color-navy-tint: #EEF3F9;
+
+  --color-gold: #C8952A;
+  --color-gold-hover: #B0811F;
+  --color-gold-tint: #FBF3E3;
+
+  --color-pearl: #EEF3F9;
+
+  /* Foreground Stack */
+  --color-fg: #0A2540;
+  --color-fg-2: #425466;
+  --color-fg-muted: #697386;
+  --color-fg-faint: #9BA5B4;
+
+  /* Surface System */
+  --color-bg: #F6F9FC;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F0F4F8;
+  --color-border: #E3E8EE;
+  --color-border-2: #C1C9D2;
+  --color-input-bd: #D1D9E0;
+
+  /* Semantic */
+  --color-success: #16A34A;
+  --color-error: #DC2626;
+  --color-warning: #D97706;
+  --color-info: #0284C7;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+
+  /* Font Families */
+  --font-sans: -apple-system, 'SF Pro Text', BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-arabic: 'Almarai', sans-serif;
+  --font-mono: 'DM Mono', monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base Reset ── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* RTL / Arabic */
+[dir="rtl"] body,
+[dir="rtl"] {
+  font-family: var(--font-arabic);
+}
+
+/* ── ANIMATED GRADIENT MESH (Stripe parallax bg) ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 100% 60% at 10% -10%, rgba(0,136,204,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 90% 5%, rgba(0,62,120,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 70% at 50% 110%, rgba(200,149,42,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at -5% 50%, rgba(0,136,204,0.05) 0%, transparent 50%),
+    #F6F9FC;
+  animation: meshDrift 18s ease-in-out infinite alternate;
+}
+
+@keyframes meshDrift {
+  0% {
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, auto;
+    background-position: 10% -10%, 90% 5%, 50% 110%, -5% 50%, 0 0;
+  }
+  100% {
+    background-size: 110% 110%, 95% 95%, 105% 105%, 90% 90%, auto;
+    background-position: 15% -5%, 85% 10%, 45% 115%, -2% 55%, 0 0;
+  }
+}
+
+/* ── Dot grid overlay ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(10,37,64,0.045) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+/* ── Glass utility classes ── */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(0, 136, 204, 0.18);
+  transform: translateY(-2px);
+}
+
+/* ── Section spacing ── */
+.section-padding {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+
+/* ── Smooth scroll offset for fixed navbar ── */
+[id] {
+  scroll-margin-top: 80px;
 }
